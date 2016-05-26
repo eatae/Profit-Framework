@@ -9,6 +9,7 @@ if(empty($_GET['id'])) {
 }
 
 $article = Article::findById($_GET['id'])[0];
+$article->getOneLead();
 
 Article::getOneLead($article);
 
@@ -23,7 +24,7 @@ Article::getOneLead($article);
 
 
 /* test */
-echo '<pre>';
-var_dump($article);
-var_dump($_SERVER);
-echo $article->news_id;
+//echo '<pre>';
+//var_dump($article);
+//var_dump($_SERVER);
+//echo $article->news_id;

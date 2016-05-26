@@ -33,6 +33,7 @@ class Article extends Model
         echo "<h1>Вы читаете новость № $this->news_id</h1>";
         echo "<h2>Это - $this->title</h2>";
         echo "<h3>Сама статья:<br>$this->lead</h3>";
+        echo "<a href='http://profitphp2.local/index.php'> Назад </a>";
     }
 
 //    public static function findAll(){
