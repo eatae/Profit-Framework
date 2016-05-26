@@ -11,7 +11,6 @@ if(empty($_GET['id'])) {
 $article = Article::findById($_GET['id'])[0];
 $article->getOneLead();
 
-Article::getOneLead($article);
 
 
 
