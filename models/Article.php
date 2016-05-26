@@ -35,10 +35,4 @@ class Article extends Model
         echo "<h3>Сама статья:<br>$article->lead</h3>";
     }
 
-//    public static function findAll(){
-//        $db = new Db();
-//        $data = $db->query('SELECT * FROM ' . self::TABLE, array(), __CLASS__);
-//        return $data;
-//    }
-
 }

@@ -11,21 +11,3 @@ if(empty($_GET['id'])) {
 $article = Article::findById($_GET['id'])[0];
 
 Article::getOneLead($article);
-
-
-
-//echo "<h1>Вы читаете новость № $article->news_id</h1>";
-//
-//echo "<h2>Это - '$article->title'</h2>";
-//
-//echo "<p border='1'>Сама статья $article->lead</p>";
-
-
-
-
-
-/* test */
-echo '<pre>';
-var_dump($article);
-var_dump($_SERVER);
-echo $article->news_id;
