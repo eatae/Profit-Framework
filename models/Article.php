@@ -33,6 +33,7 @@ class Article extends Model
         echo "<h1>Вы читаете новость № $article->news_id</h1>";
         echo "<h2>Это - '$article->title'</h2>";
         echo "<h3>Сама статья:<br>$article->lead</h3>";
+        echo "<a href='http://profitphp2.local/index.php'> Назад </a>";
     }
 
 }
