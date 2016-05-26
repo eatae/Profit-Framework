@@ -22,8 +22,6 @@ Article::getOneLead($article);
 
 
 
-
-
 /* test */
 echo '<pre>';
 var_dump($article);
