@@ -29,10 +29,10 @@ class Article extends Model
         echo '</table>';
     }
 
-    public static function getOneLead($article){
-        echo "<h1>Вы читаете новость № $article->news_id</h1>";
-        echo "<h2>Это - '$article->title'</h2>";
-        echo "<h3>Сама статья:<br>$article->lead</h3>";
+    public function getOneLead(){
+        echo "<h1>Вы читаете новость № $this->news_id</h1>";
+        echo "<h2>Это - $this->title</h2>";
+        echo "<h3>Сама статья:<br>$this->lead</h3>";
         echo "<a href='http://profitphp2.local/index.php'> Назад </a>";
     }
 

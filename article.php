@@ -10,4 +10,4 @@ if(empty($_GET['id'])) {
 
 $article = Article::findById($_GET['id'])[0];
 
-Article::getOneLead($article);
+$article->getOneLead();
