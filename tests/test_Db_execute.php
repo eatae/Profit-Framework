@@ -36,4 +36,3 @@ function updateNews()
 
 //updateNews();
 //insertNews();
-
