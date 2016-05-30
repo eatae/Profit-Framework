@@ -18,6 +18,7 @@
     <p>Содержание <input type='text' name='lead' size='40'></p>
     <input type='submit' value='Отправить'>
 </form>
+
 <form action='<?=$_SERVER['PHP_SELF']?>'>
     <input type="hidden" name="item" value="update">
     <p><b>Обновление новости</b></p>
@@ -26,6 +27,7 @@
     <p>Новое содержание <input type='text' name='lead' size='40'></p>
     <input type='submit' value='Отправить'>
 </form>
+
 <form action='<?=$_SERVER['PHP_SELF']?>'>
     <input type="hidden" name="item" value="delete">
     <p><b>Удаление новости</b></p>
