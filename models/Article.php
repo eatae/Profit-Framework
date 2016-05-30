@@ -1,5 +1,5 @@
 <?php
-
+require __DIR__ . '/../classes/Model.php';
 /*
  * класс описывает таблицу news
  * объект как отдельная запись db
@@ -11,12 +11,12 @@ class Article extends Model
     public $title;
     public $lead;
 
-    const TABLE = 'news';
+    protected static $table = 'news';
 
     public static function getNews()
     {
-        $db = New Db();
-        $data = $db->query('SELECT * FROM news
+        $db = new Db();
+        $data = $db->query('SELECT * FROM ' . self::$table .'
                               ORDER BY id DESC LIMIT 4');
 
         return $data;
