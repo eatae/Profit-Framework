@@ -1,13 +1,8 @@
 <?
-require __DIR__ . '/models/Article.php';
+require __DIR__ . '/autoload.php';
 
-$data = Article::getNews();
+$articles = models\Article::findAll();
+$view = new classes\View();
 
-include __DIR__ . '/view/view_index.php';
-
-
-$insert = new Article;
-//$insert->title = 'Необычная новость';
-//$insert->lead = 'Белки любят морковь';
-//$insert->insert();
-echo $insert->id;
+$view->news = $articles;
+$view->display(__DIR__ . '/templates/view_index.php');

@@ -1,4 +1,5 @@
 <?php
+namespace App;
 
 class Config
 {
@@ -9,7 +10,7 @@ class Config
     private function __construct()
     {
         $filePath = __DIR__.'/../config.php';
-        if(file_exists($filePath))
+        if(is_readable($filePath))
             $this->data = include $filePath;
     }
 

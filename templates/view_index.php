@@ -19,14 +19,15 @@
     <table>
         <th>Ссылка на новость</th>
         <th>Название</th>
+        <th>Автор</th>
         <?php
-        foreach($data as $val){
-            echo "<tr>
-                    <td><a href='article.php?id={$val['id']}'>Новость № {$val['id']}</a></td>
-                    <td>{$val['title']}</td>
-                 </tr>";
-        }
-        ?>
+        foreach($this->news as $val): ?>
+            <tr>
+                <td><a href='article.php?id=<?php echo $val->id; ?>'>Новость № <?php echo $val->id; ?></a></td>
+                <td><?php echo $val->title; ?></td>
+                <td><?php echo ($val->authorName) ? $val->authorName : 'Нет автора'?></td>
+            </tr>
+        <?php endforeach ?>
     </table>
 </body>
 </html>
