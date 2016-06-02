@@ -1,11 +1,12 @@
 <?php
-require __DIR__ . '/models/Article.php';
+require __DIR__ . '/autoload.php';
+
 if(!isset($_GET['item'])) {
-    include __DIR__ . '/view/view_admin.php';
+    include __DIR__ . '/templates/view_admin.php';
     exit;
 }
 
-$article = new Article();
+$article = new models\Article();
 
 switch($_GET['item']){
     case 'insert':
@@ -13,9 +14,9 @@ switch($_GET['item']){
             $article->title = $_GET['title'];
             $article->lead = $_GET['lead'];
             $article->save();
-            include __DIR__ . '/view/view_admin.php';
+            include __DIR__ . '/templates/view_admin.php';
         }else{
-            include __DIR__ . '/view/view_admin_err.php';
+            include __DIR__ . '/templates/view_admin_err.php';
         };
         break;
 
@@ -25,9 +26,9 @@ switch($_GET['item']){
             $article->title = $_GET['title'];
             $article->lead = $_GET['lead'];
             $article->save();
-            include __DIR__ . '/view/view_admin.php';
+            include __DIR__ . '/templates/view_admin.php';
         }else{
-            include __DIR__ . '/view/view_admin_err.php';
+            include __DIR__ . '/templates/view_admin_err.php';
         };
         break;
 
@@ -35,9 +36,9 @@ switch($_GET['item']){
         if($_GET['id']){
             $article->id = $_GET['id'];
             var_dump($article->delete());
-            include __DIR__ . '/view/view_admin.php';
+            include __DIR__ . '/templates/view_admin.php';
         }else{
-            include __DIR__ . '/view/view_admin_err.php';
+            include __DIR__ . '/templates/view_admin_err.php';
         };
         break;
 

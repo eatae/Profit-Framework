@@ -1,6 +1,40 @@
 <?php
 
-require __DIR__ .'/../classes/Db.php';
+require __DIR__ .'/../autoload.php';
+
+
+$article = new models\Article();
+
+$article->id = 1;
+
+var_dump($article->authorName);
+
+/*
+
+$str = '\Name\Space\Space::$b';
+echo trim($str, '\\');
+echo '<br>';
+echo str_replace('\\', '/', lcfirst($str));
+echo '<br>';
+echo $str;
+
+
+
+
+class Singleton
+{
+    private $pr = 2;
+
+    public function sum($pub)
+    {
+        return $pub * $this->pr;
+    }
+}
+
+$s = new Singleton();
+echo $s->sum(10);
+
+
 
 
 
@@ -14,14 +48,6 @@ function checkId($id)
 
 
 
-
-
-
-
-
-
-
-/*
 function update($arr, $id)
 {
     $set = '';

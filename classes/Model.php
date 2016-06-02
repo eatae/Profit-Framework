@@ -1,6 +1,13 @@
 <?php
-require __DIR__ . '/Db.php';
+namespace classes;
+require __DIR__ . '/../autoload.php';
 
+use classes;
+
+/**
+ * @abstract Class Db
+ * @package classes
+ */
 abstract class Model
 {
 
@@ -8,21 +15,31 @@ abstract class Model
 
     public $id;
 
-
-    public static function findAll()
+    /**
+     * @param int $limit
+     * @return array
+     */
+    public static function findAll($limit = 5)
     {
-        $db = new Db();
-        $data = $db->query('SELECT * FROM ' . static::$table, [], static::class);
+        $sql = 'SELECT * FROM ' . static::$table .
+                    ' ORDER BY id DESC LIMIT ' . $limit;
+
+        $db = new classes\Db();
+        $data = $db->query($sql, [], static::class);
         return $data;
     }
 
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function findById($id)
     {
         $db = new Db();
         $data = $db->query('SELECT * FROM ' . static::$table .
                                 ' WHERE id = :id', [':id' => $id], static::class);
-        return $data;
+        return array_shift($data);
     }
 
 
@@ -35,12 +52,13 @@ abstract class Model
     }
 
 
+
     /** SAVE AND DELETE **/
     // ----------------
 
     public function delete()
     {
-        if(empty($this->id) or !$this->checkId($id))
+        if(empty($this->id) or $this->checkId($this->id))
             return false;
 
         $sql = 'DELETE FROM '. static::$table . ' WHERE id = :id';
@@ -84,7 +102,6 @@ abstract class Model
         $set = [];
         $params = [];
 
-
         foreach($this as $key => $val){
             //получаем стр. set[1] => 'id = :id'
             $set[] = $key.'=:'.$key;
@@ -103,7 +120,7 @@ abstract class Model
     public function save()
     {
         //пустой id или такого id нет
-        if (empty($this->id) or !$this->checkId($this->id)) {
+        if (empty($this->id) or $this->checkId($this->id)) {
             return $this->insert();
 
         } else {
