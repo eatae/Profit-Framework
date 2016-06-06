@@ -15,8 +15,21 @@ $action = $parts[2] ?: 'Default';
 $ctrlClass = '\App\Controllers\\' . ucfirst($ctrl);
 $actionMethodName = 'action' . ucfirst($action);
 
-if(!class_exists($ctrlClass, true))
+if(!checkDir($ctrlClass)){
     $ctrlClass = '\App\Controllers\Index';
+}
+
+function checkDir($dir){
+    $dir = trim($dir, '\\');
+    $dir = str_replace('\\', '/', $dir);
+
+    if(!is_readable(__DIR__ . '/' . $dir . '.php')) {
+        return false;
+    }
+
+    return true;
+}
+
 
 $ctrl = new $ctrlClass;
 $ctrl->action($actionMethodName);
