@@ -1,11 +1,6 @@
 <?php
-namespace classes;
-header('Content-type: text/html; charset=utf-8');
+namespace App;
 
-/**
- * Class Db
- * @package classes
- */
 class Db
 {
     protected $db_hdr;
@@ -18,9 +13,6 @@ class Db
 
 
     /**
-     * @param $sql
-     * @param array $params
-     * @param string $class
      * @return array
      */
     public function query($sql, $params = [], $class='')
@@ -35,8 +27,6 @@ class Db
 
 
     /**
-     * @param $sql
-     * @param array $params
      * @return bool
      */
     public function execute($sql, $params=[])

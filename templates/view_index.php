@@ -23,7 +23,7 @@
         <?php
         foreach($this->news as $val): ?>
             <tr>
-                <td><a href='article.php?id=<?php echo $val->id; ?>'>Новость № <?php echo $val->id; ?></a></td>
+                <td><a href='/Article/Default/?id=<?php echo $val->id; ?>'>Новость № <?php echo $val->id; ?></a></td>
                 <td><?php echo $val->title; ?></td>
                 <td><?php echo ($val->authorName) ? $val->authorName : 'Нет автора'?></td>
             </tr>

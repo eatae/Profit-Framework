@@ -1,21 +1,11 @@
 <?php
-namespace models;
-require __DIR__ . '/../autoload.php';
+namespace App\models;
+require __DIR__ . '/../../autoload.php';
 
-use classes;
+use App;
 
-/**
- * Class Article
- * @package models
- *
- * Класс описывает таблицу news,
- * объект как отдельная запись db.
- *
- * @property-read object $author
- * @property-read string $authorName
- */
 
-class Article extends classes\Model
+class Article extends App\Model
 {
     /* свойства одноимённые столбцам в db */
     public $id;
@@ -28,10 +18,6 @@ class Article extends classes\Model
     protected $author;
     protected $authorName;
 
-    /**
-     * @param $key
-     * @return bool|mixed|string
-     */
     public function __get($key)
     {
         if(null == $this->id)

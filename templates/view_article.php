@@ -8,14 +8,13 @@
 </head>
 <body>
 
+
 <?php
     if(!is_object($this->article)) {
         echo 'Такой записи не существует';
+        echo "<a href='http://profitphp2.local/index.php'>На главную</a>";
         exit;
     }
-
-//    echo '<pre>';
-//    var_dump($this->article);
 
     echo "<h1>Вы читаете новость № {$this->article->id}</h1>\n
           <h2>Это - {$this->article->title}</h2>\n

@@ -9,7 +9,7 @@ class Config
 
     private function __construct()
     {
-        $filePath = __DIR__.'/../config.php';
+        $filePath = __DIR__.'/../../config.php';
         if(is_readable($filePath))
             $this->data = include $filePath;
     }

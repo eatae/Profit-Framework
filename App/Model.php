@@ -1,13 +1,9 @@
 <?php
-namespace classes;
+namespace App;
 require __DIR__ . '/../autoload.php';
 
-use classes;
 
-/**
- * @abstract Class Db
- * @package classes
- */
+
 abstract class Model
 {
 
@@ -15,31 +11,24 @@ abstract class Model
 
     public $id;
 
-    /**
-     * @param int $limit
-     * @return array
-     */
+
     public static function findAll($limit = 5)
     {
         $sql = 'SELECT * FROM ' . static::$table .
                     ' ORDER BY id DESC LIMIT ' . $limit;
 
-        $db = new classes\Db();
+        $db = new Db();
         $data = $db->query($sql, [], static::class);
         return $data;
     }
 
 
-    /**
-     * @param $id
-     * @return mixed
-     */
     public static function findById($id)
     {
         $db = new Db();
         $data = $db->query('SELECT * FROM ' . static::$table .
                                 ' WHERE id = :id', [':id' => $id], static::class);
-        return array_shift($data);
+        return ($data) ? array_shift($data) :  false;
     }
 
 
@@ -52,10 +41,8 @@ abstract class Model
     }
 
 
-
     /** SAVE AND DELETE **/
     // ----------------
-
     public function delete()
     {
         if(empty($this->id) or $this->checkId($this->id))

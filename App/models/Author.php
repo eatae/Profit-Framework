@@ -1,7 +1,7 @@
 <?php
-namespace models;
+namespace App\models;
 
-use classes;
+use App;
 
 /**
  * Class Author
@@ -10,7 +10,7 @@ use classes;
  * Класс описывает таблицу authors,
  * объект как отдельная запись db.
  */
-class Author extends classes\Model
+class Author extends App\Model
 {
     public $id;
     public $firstname;

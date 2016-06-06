@@ -6,7 +6,7 @@ if(!isset($_GET['item'])) {
     exit;
 }
 
-$article = new models\Article();
+$article = new App\models\Article();
 
 switch($_GET['item']){
     case 'insert':
