@@ -8,14 +8,21 @@
             margin: 20px;
             border: 2px solid silver;
         }
+
         td, th
         {
             padding: 10px;
             border: 2px solid silver;
         }
+
+        button
+        {
+            margin: 22px;
+        }
     </style>
 </head>
 <body>
+    <a href="/Admin">админка</a>
     <table>
         <th>Ссылка на новость</th>
         <th>Название</th>

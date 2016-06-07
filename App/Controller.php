@@ -5,11 +5,9 @@ namespace App;
 
 abstract class Controller
 {
-    /**
-     * @var View
-     */
     protected $view;
     protected $access;
+    protected $accessFlag = '';
 
     abstract function actionDefault();
 
@@ -22,17 +20,28 @@ abstract class Controller
 
     public function action($action)
     {
-        if(!true == $this->access()) {
-            echo 'Доступ закрыт';
-            return;
-        }
-
+        $this->access();
         method_exists($this, $action) ? $this->$action() : $this->actionDefault();
     }
 
 
-    public function access()
+    protected function access()
     {
-        return true;
+        if(empty($this->accessFlag))
+            return;
+        $this->actionDefault();
+        exit;
+/*
+
+        }elseif(!empty($_GET) and $this->access == $_GET){
+            $this->actionDefault();
+        }else{
+            $onlyClass = explode('\\', strtolower(static::class));
+            $onlyClass = array_pop($onlyClass);
+            $this->view->display(__DIR__ .
+                '/../templates/view_' .  $onlyClass . '_access.php');
+            exit;
+        }
+*/
     }
 }

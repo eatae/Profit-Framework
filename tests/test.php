@@ -3,6 +3,11 @@
 require __DIR__ .'/../autoload.php';
 
 
+
+
+var_dump($_SERVER['REQUEST_METHOD']);
+
+/*
 $article = new models\Article();
 
 $article->id = 1;

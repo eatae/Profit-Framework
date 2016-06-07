@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>Заполните, пожалуйста поля.</h1>
-<a href='admin.php'> Назад </a>
+<a href='/Admin'> Назад </a>
 
 </body>
 </html>

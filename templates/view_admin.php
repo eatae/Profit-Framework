@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Index</title>
+    <title>Admin</title>
     <style type="text/css">
         form {
             border: 2px silver solid;
@@ -11,7 +11,10 @@
     </style>
 </head>
 <body>
-<form action='<?=$_SERVER['PHP_SELF']?>'>
+
+<>
+
+<form action='/Admin/MakeArticle/'>
     <input type="hidden" name="item" value="insert">
     <p><b>Новая новость:</b></p>
     <p>Заголовок: <input type='text' name='title'></p>
@@ -19,7 +22,7 @@
     <input type='submit' value='Отправить'>
 </form>
 
-<form action='<?=$_SERVER['PHP_SELF']?>'>
+<form action='/Admin/MakeArticle/'>
     <input type="hidden" name="item" value="update">
     <p><b>Обновление новости</b></p>
     <p>Номер новости (id): <input type='text' name='id'></p>

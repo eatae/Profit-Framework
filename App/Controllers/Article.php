@@ -14,11 +14,8 @@ class Article
             echo "<a href='http://profitphp2.local/index.php'>Выберите новость</a>";
             exit;
         }
-
         $article = App\models\Article::findByID($_GET['id']);
-
         $this->view->article = $article;
-
         $this->view->display('__.DIR__' . '/../../templates/view_article.php');
     }
 }

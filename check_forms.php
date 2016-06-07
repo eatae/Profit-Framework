@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_GET['item'])) {
-    include __DIR__ . '/../templates/view_admin.php';
+    $this->view->display( __DIR__ . '/../../templates/view_admin.php');
     exit;
 }
 
@@ -13,9 +13,9 @@ switch($_GET['item']){
             $article->title = $_GET['title'];
             $article->lead = $_GET['lead'];
             $article->save();
-            include __DIR__ . '/../templates/view_admin.php';
+            $this->view->display( __DIR__ . '/../../templates/view_admin.php');
         }else{
-            include __DIR__ . '/../templates/view_admin_err.php';
+            $this->view->display( __DIR__ . '/../../templates/view_admin_err.php');
         };
         break;
 
@@ -25,19 +25,19 @@ switch($_GET['item']){
             $article->title = $_GET['title'];
             $article->lead = $_GET['lead'];
             $article->save();
-            include __DIR__ . '/../templates/view_admin.php';
+            $this->view->display( __DIR__ . '/../../templates/view_admin.php');
         }else{
-            include __DIR__ . '/../templates/view_admin_err.php';
+            $this->view->display( __DIR__ . '/../../templates/view_admin_err.php');
         };
         break;
 
     case 'delete':
         if($_GET['id']){
             $article->id = $_GET['id'];
-            var_dump($article->delete());
-            include __DIR__ . '/../templates/view_admin.php';
+            $article->delete();
+            $this->view->display( __DIR__ . '/../../templates/view_admin.php');
         }else{
-            include __DIR__ . '/../templates/view_admin_err.php';
+            $this->view->display(__DIR__ . '/../../templates/view_admin_err.php');
         };
         break;
 
