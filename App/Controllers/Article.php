@@ -16,6 +16,6 @@ class Article
         }
         $article = App\models\Article::findByID($_GET['id']);
         $this->view->article = $article;
-        $this->view->display('__.DIR__' . '/../../templates/view_article.php');
+        $this->view->display(__DIR__ . '/../../templates/view_article.php');
     }
 }

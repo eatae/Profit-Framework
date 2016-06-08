@@ -1,21 +1,19 @@
 <?php
 
-if(!isset($_GET['item'])) {
-    $this->view->display( __DIR__ . '/../../templates/view_admin.php');
-    exit;
-}
+//require __DIR__.'/autoload.php';
 
 $article = new App\models\Article();
 
-switch($_GET['item']){
+switch($_GET['item']) {
     case 'insert':
-        if($_GET['title'] and $_GET['lead']){
+        if ($_GET['title'] and $_GET['lead']) {
             $article->title = $_GET['title'];
             $article->lead = $_GET['lead'];
             $article->save();
-            $this->view->display( __DIR__ . '/../../templates/view_admin.php');
-        }else{
-            $this->view->display( __DIR__ . '/../../templates/view_admin_err.php');
+
+            $this->view->display(__DIR__ . '/templates/view_admin.php');
+        } else {
+            $this->view->display(__DIR__ . '/templates/view_admin_err.php');
         };
         break;
 
@@ -25,9 +23,9 @@ switch($_GET['item']){
             $article->title = $_GET['title'];
             $article->lead = $_GET['lead'];
             $article->save();
-            $this->view->display( __DIR__ . '/../../templates/view_admin.php');
+            $this->view->display( __DIR__ . '/templates/view_admin.php');
         }else{
-            $this->view->display( __DIR__ . '/../../templates/view_admin_err.php');
+            $this->view->display( __DIR__ . '/templates/view_admin_err.php');
         };
         break;
 
@@ -35,9 +33,9 @@ switch($_GET['item']){
         if($_GET['id']){
             $article->id = $_GET['id'];
             $article->delete();
-            $this->view->display( __DIR__ . '/../../templates/view_admin.php');
+            $this->view->display( __DIR__ . '/templates/view_admin.php');
         }else{
-            $this->view->display(__DIR__ . '/../../templates/view_admin_err.php');
+            $this->view->display(__DIR__ . '/templates/view_admin_err.php');
         };
         break;
 

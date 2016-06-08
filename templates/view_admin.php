@@ -12,13 +12,12 @@
 </head>
 <body>
 
-<>
-
 <form action='/Admin/MakeArticle/'>
     <input type="hidden" name="item" value="insert">
     <p><b>Новая новость:</b></p>
     <p>Заголовок: <input type='text' name='title'></p>
     <p>Содержание <input type='text' name='lead' size='40'></p>
+    <p>ID автора <input type='text' name='author_id' size='10'></p>
     <input type='submit' value='Отправить'>
 </form>
 
@@ -28,10 +27,11 @@
     <p>Номер новости (id): <input type='text' name='id'></p>
     <p>Новый заголовок: <input type='text' name='title'></p>
     <p>Новое содержание <input type='text' name='lead' size='40'></p>
+    <p>ID автора <input type='text' name='author_id' size='10'></p>
     <input type='submit' value='Отправить'>
 </form>
 
-<form action='<?=$_SERVER['PHP_SELF']?>'>
+<form action='/Admin/MakeArticle/'>
     <input type="hidden" name="item" value="delete">
     <p><b>Удаление новости</b></p>
     <p>Номер новости (id): <input type='text' name='id'></p>

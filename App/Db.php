@@ -11,7 +11,6 @@ class Db
         $this->db_hdr = new \PDO('mysql:host=127.0.0.1; dbname=profitphp2', 'root', '');
     }
 
-
     /**
      * @return array
      */
@@ -25,7 +24,6 @@ class Db
 
     }
 
-
     /**
      * @return bool
      */
@@ -34,7 +32,6 @@ class Db
         $st_hdr = $this->db_hdr->prepare($sql);
         return $st_hdr->execute($params);
     }
-
 
     /**
      * @return string

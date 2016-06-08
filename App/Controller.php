@@ -27,21 +27,10 @@ abstract class Controller
 
     protected function access()
     {
-        if(empty($this->accessFlag))
-            return;
-        $this->actionDefault();
-        exit;
-/*
-
-        }elseif(!empty($_GET) and $this->access == $_GET){
+        if($this->accessFlag) {
             $this->actionDefault();
-        }else{
-            $onlyClass = explode('\\', strtolower(static::class));
-            $onlyClass = array_pop($onlyClass);
-            $this->view->display(__DIR__ .
-                '/../templates/view_' .  $onlyClass . '_access.php');
             exit;
         }
-*/
+        else{ return; }
     }
 }

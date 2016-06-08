@@ -70,7 +70,7 @@ abstract class Model
         }
 
         $sql = 'INSERT INTO '. static::$table .
-                ' ('. implode(', ', $props) .')
+                 '('. implode(', ', $props) .')
                   VALUES ('. implode(', ', $binds) .')';
 
         $db = new Db();
@@ -90,7 +90,7 @@ abstract class Model
         $params = [];
 
         foreach($this as $key => $val){
-            //получаем стр. set[1] => 'id = :id'
+            //получаем стр. set[0] => 'id = :id'
             $set[] = $key.'=:'.$key;
             $params[':'.$key] = $val;
         }
@@ -107,7 +107,7 @@ abstract class Model
     public function save()
     {
         //пустой id или такого id нет
-        if (empty($this->id) or $this->checkId($this->id)) {
+        if (empty($this->id) or !$this->checkId($this->id)) {
             return $this->insert();
 
         } else {

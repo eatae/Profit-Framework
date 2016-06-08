@@ -4,9 +4,107 @@ require __DIR__ .'/../autoload.php';
 
 
 
+$art = new \App\models\Article();
 
-var_dump($_SERVER['REQUEST_METHOD']);
+$art->title = 'check_forms';
+echo '<br>';
+$art->id = 7;
+echo 'ЗДЕСЯ';
+echo '<br>';
+$art->lead = 'check_forms';
+var_dump($art);
 
+
+
+//$g = insert($art);
+echo 'GGGGGGGG';
+var_dump($g);
+
+
+function insert($obj)
+{
+    /* получаем все имена свойств объекта */
+        $props = [];
+        $binds = [];
+        $params = [];
+
+        foreach($obj as $key => $val){
+            if($key === 'id') continue;
+
+            $props[] = $key;    //имена свойст / столбцов
+            $binds[] = ':' . $key;  //для подстановки (:lead,..)
+            $params[':' .$key] = $val;  //значения
+        }
+        echo "<pre>";
+        var_dump($props, $binds, $params);
+
+
+        $sql = 'INSERT INTO news
+            ('. implode(', ', $props) .')
+                  VALUES ('. implode(', ', $binds) .')';
+
+    var_dump($sql);
+
+        $db = new App\Db();
+        //если запрос исполнился
+        if($db->execute($sql, $params)) {
+            $obj->id = $db->insertId();
+            return true;
+        }
+        //иначе
+        return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//return $st_hdr->execute($params);
+
+/*
+ *
+ *
+ *
+ *
+ *
+ * //use App;
+
+$db_hdr = new \PDO('mysql:host=127.0.0.1; dbname=profitphp2', 'root', '');
+
+$sql = "INSERT INTO news(title, lead)
+          VALUES('test', 'test')";
+
+$st_hdr = $db_hdr->prepare($sql);
+$q = $st_hdr->execute();
+var_dump($q);
+
+
+$art = new \App\models\Article();
+
+var_dump($art);
+
+
+$art->title = 'HHHH';
+echo '<br>';
+$art->id = 7;
+echo 'ЗДЕСЯ';
+echo '<br>';
+$art->lead = 'XXXX';
+var_dump($art);
+$art = $art->update();
+var_dump($art);
 /*
 $article = new models\Article();
 

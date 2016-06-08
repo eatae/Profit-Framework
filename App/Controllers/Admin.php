@@ -4,12 +4,13 @@ namespace App\Controllers;
 require __DIR__.'/../../autoload.php';
 
 use App;
+use App\models;
 
 class Admin
     extends App\Controller
 {
-
-    protected $accessFlag = true;
+    public $article;
+    protected $accessFlag;
     protected $access =
         [
             'login' => 'root',
@@ -17,28 +18,20 @@ class Admin
         ];
 
 
-    protected function checkAccess()
+    public function action($action)
     {
-        if(!$_SESSION['admin']) {
-            $this->accessFlag = 'true';
-            $this->view->display
-            (__DIR__ . '/../../templates/view_admin_access.php');
-            exit;
-        }
-        else{
-            return;
-        }
+        $this->accessFlag = !$_SESSION['admin'];
+        parent::action($action);
     }
 
 
     public function actionDefault()
     {
-        if($_SESSION['admin']) {
+        if($_SERVER['REQUEST_METHOD'] == 'GET' and !$this->accessFlag) {
             $this->view->display
                 (__DIR__ . '/../../templates/view_admin.php');
         }
         else if($_SERVER['REQUEST_METHOD'] == 'POST' and $this->access == $_POST){
-            $this->accessFlag = '';
             $_SESSION['admin'] = true;
             $this->view->display
                 (__DIR__ . '/../../templates/view_admin.php');
@@ -52,9 +45,30 @@ class Admin
 
     public function actionMakeArticle()
     {
-        $this->checkAccess();
-
+        if($this->accessFlag) {
+            $this->view->display
+            (__DIR__ . '/../../templates/view_admin_access.php');
+            return;
+        }
         include __DIR__ . '/../../check_forms.php';
     }
 
 }
+
+
+
+
+/*
+protected function checkAccess()
+{
+    if(!$_SESSION['admin']) {
+        $this->accessFlag = true;
+        $this->view->display
+        (__DIR__ . '/../../templates/view_admin_access.php');
+        exit;
+    }
+    else{
+        return;
+    }
+}
+*/

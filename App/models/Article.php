@@ -15,8 +15,8 @@ class Article extends App\Model
 
     protected static $table = 'news';
 
-    protected $author;
-    protected $authorName;
+    private $author;
+    private $authorName;
 
     public function __get($key)
     {
