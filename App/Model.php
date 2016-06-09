@@ -56,6 +56,7 @@ abstract class Model
     // ----------------
     public function delete()
     {
+        //execute - разобраться.
 //        if(empty($this->id) or !$this->checkId($this->id))
 //            return false;
 
