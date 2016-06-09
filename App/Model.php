@@ -1,5 +1,7 @@
 <?php
 namespace App;
+use App\Exceptions\NotFoundException;
+
 require __DIR__ . '/../autoload.php';
 
 
@@ -19,7 +21,11 @@ abstract class Model
 
         $db = new Db();
         $data = $db->query($sql, [], static::class);
-        return $data;
+        if(!$data or empty($data)){
+            throw new NotFoundException('Ошибка findAll');
+        }else {
+            return $data;
+        }
     }
 
 
@@ -28,7 +34,9 @@ abstract class Model
         $db = new Db();
         $data = $db->query('SELECT * FROM ' . static::$table .
                                 ' WHERE id = :id', [':id' => $id], static::class);
-        return ($data) ? array_shift($data) :  false;
+        if(!$data or empty($data)){
+            throw new NotFoundException('Ошибка findById');
+        }else { return array_shift($data); }
     }
 
 
@@ -37,7 +45,10 @@ abstract class Model
     {
         $db = new Db();
         $sql = 'SELECT id FROM '. static::$table .' WHERE id = :id';
-        return $db->execute($sql, [':id'=>$id]);
+
+        if(!$db->execute($sql, [':id'=>$id]))
+            throw new NotFoundException('checkId');
+        return true;
     }
 
 
@@ -45,12 +56,15 @@ abstract class Model
     // ----------------
     public function delete()
     {
-        if(empty($this->id) or $this->checkId($this->id))
-            return false;
+//        if(empty($this->id) or !$this->checkId($this->id))
+//            return false;
 
         $sql = 'DELETE FROM '. static::$table . ' WHERE id = :id';
         $db = new Db();
-        return $db->execute($sql, [':id'=>$this->id]);
+        if(!$db->execute($sql, [':id'=>$this->id])) {
+            throw new NotFoundException('Ошибка findById');
+        }
+        return true;
     }
 
 
@@ -77,10 +91,7 @@ abstract class Model
         //если запрос исполнился
         if($db->execute($sql, $params)) {
             $this->id = $db->insertId();
-            return true;
-        }
-        //иначе
-        return false;
+        }else { throw new NotFoundException('Ошибка insert'); }
     }
 
 
@@ -100,7 +111,9 @@ abstract class Model
                     ' WHERE id = '. $this->id;
 
         $db = new Db();
-        return $db->execute($sql, $params);
+        if(!$db->execute($sql, $params)) {
+            throw new NotFoundException('Ошибка insert');
+        }
     }
 
 
@@ -108,10 +121,10 @@ abstract class Model
     {
         //пустой id или такого id нет
         if (empty($this->id) or !$this->checkId($this->id)) {
-            return $this->insert();
+            $this->insert();
 
         } else {
-            return $this->update();
+            $this->update();
         }
     }
 

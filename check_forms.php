@@ -32,7 +32,7 @@ switch($_GET['item']) {
     case 'delete':
         if($_GET['id']){
             $article->id = $_GET['id'];
-            $article->delete();
+            var_dump($article->delete());
             $this->view->display( __DIR__ . '/templates/view_admin.php');
         }else{
             $this->view->display(__DIR__ . '/templates/view_admin_err.php');
