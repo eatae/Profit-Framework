@@ -11,6 +11,7 @@
     </style>
 </head>
 <body>
+<a href='/Index'> Главная </a>
 
 <form action='/Admin/MakeArticle/'>
     <input type="hidden" name="item" value="insert">

@@ -1,0 +1,6 @@
+13 Jun 2016, 15:46:12 FILE:C:\OpenServer\domains\profitPHP2.local\App\Exceptions\NotFoundException.php LINE:17 CLASS:App\Exceptions\AbstractLogException Тут сообщение... CRITICAL
+13 Jun 2016, 15:48:44 FILE:C:\OpenServer\domains\profitPHP2.local\App\Exceptions\NotFoundException.php LINE:17 CLASS:App\Exceptions\AbstractLogException Тут сообщение... CRITICAL
+13 Jun 2016, 15:59:15 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
+13 Jun 2016, 15:59:15 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
+13 Jun 2016, 15:59:51 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
+13 Jun 2016, 15:59:51 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT

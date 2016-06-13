@@ -6,7 +6,7 @@
     p
     {
         border: 2px dotted darkseagreen;
-        font: 200% Arial;
+        font: 150% Arial;
     }
     h1
     {
@@ -18,7 +18,9 @@
 <body>
     <h1>Красивая страница 404</h1>
     <p>
-        Ошибка 404 не найдено
+        <?php echo $this->exception; ?>
+        <br>
+        Ошибка 404: не найдено.
     </p>
 
     <a href="/Index">Главная</a>

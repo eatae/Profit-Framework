@@ -6,6 +6,40 @@ require __DIR__ .'/../autoload.php';
 
 $art = new \App\models\Article();
 
+
+public function delete()
+{
+    if(empty($this->id))
+        return false;
+
+    echo '<pre>';
+    echo $this->id;
+
+    $sql = 'DELETE FROM news WHERE id = :id';
+    $db = new App\Db();
+    $db->execute($sql, [':id'=>$this->id])
+        //throw new App\Exceptions\NotFoundException('Ошибка findById');
+    var_dump($db);
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 $art->title = 'check_forms';
 echo '<br>';
 $art->id = 7;
@@ -24,6 +58,7 @@ var_dump($g);
 function insert($obj)
 {
     /* получаем все имена свойств объекта */
+/*
         $props = [];
         $binds = [];
         $params = [];

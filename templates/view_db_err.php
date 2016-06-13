@@ -6,7 +6,7 @@
     p
     {
         border: 2px dotted darkseagreen;
-        font: 200% Arial;
+        font: 140% Arial;
     }
     h1
     {
@@ -18,10 +18,12 @@
 <body>
     <h1>Предупреждение</h1>
     <p>
+        <? echo ($this->exception); ?>
+        <br>
+        <br>
         В настоящий момент данные не доступны,
         попробуйте обратиться некоторое время спустя.
     </p>
-
     <a href="/Index">Главная</a>
 </table>
 </body>

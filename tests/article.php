@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/autoload.php';
 
-if(empty($_GET['id'])) {
+if (empty($_GET['id'])) {
     echo "<a href='http://profitphp2.local/index.php'>Выберите новость</a>";
     exit;
 }
