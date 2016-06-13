@@ -27,10 +27,11 @@ abstract class Controller
 
     protected function access()
     {
-        if($this->accessFlag) {
+        if ($this->accessFlag) {
             $this->actionDefault();
             exit;
+        } else {
+            return;
         }
-        else{ return; }
     }
 }

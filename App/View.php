@@ -6,8 +6,7 @@ use App\traits;
 require __DIR__ . '/../autoload.php';
 
 
-class View
-    implements \Countable
+class View implements \Countable
 {
     use traits\count_magic_trait;
 

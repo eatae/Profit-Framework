@@ -1,23 +1,28 @@
 <?php
+
 namespace App\traits;
 
 trait count_magic_trait
 {
     protected $data = [];
 
-    public function count(){
+    public function count()
+    {
         return count($this->data);
     }
 
-    public function __set($key, $val){
+    public function __set($key, $val)
+    {
         $this->data[$key] = $val;
     }
 
-    public function __isset($key){
+    public function __isset($key)
+    {
         return isset($this->data[$key]);
     }
 
-    public function __get($key){
+    public function __get($key)
+    {
         return $this->data[$key];
     }
 }
