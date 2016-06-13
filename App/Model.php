@@ -68,7 +68,6 @@ abstract class Model
     }
 
 
-
     public function insert()
     {
         /* получаем все имена свойств объекта */
