@@ -23,4 +23,4 @@ https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20
 Тут view для AdminDataTable:
     - в $this->fullName придёт функция с замыканием на firstname.
     - далее вызываем и передаем lastname.
-https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/templates/view_fullName_author.php
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/templates/view_fullName_author.php#L24-L29
