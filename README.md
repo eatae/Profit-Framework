@@ -1,13 +1,26 @@
-PSR:
-  - отделил функционал от действий: Router (от index), Config от UseConfig,
-  - привел в порядок управляющие конструкции (if, try...),
-  - скобочки функций, методов, классов на отдельных строках,
-  - пустая строка после namespace, use.
-  
-Установил composer.
+1.
+generator
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/Db.php#L41
 
-Установил psr/log:
-  - log.txt в корне.
-  - MyLogger - https://github.com/eatae/profitPHP2.local/blob/a82c7f4a93fb196400df5307a523820420a97ff8/App/MyLogger.php
-  - MyLogger::log используем здесь - (AbstractLogException) - https://github.com/eatae/profitPHP2.local/blob/a82c7f4a93fb196400df5307a523820420a97ff8/App/Exceptions/AbstractLogException.php#L34
-  - Далее реализуем. И в Controllers вызываем метод Exception - https://github.com/eatae/profitPHP2.local/blob/a82c7f4a93fb196400df5307a523820420a97ff8/App/Controllers/Index.php#L23
+Изменяю немного метод модели findAll
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/Model.php#L23
+
+В контролере вызываю findAll (получаем выборку с помощью генератора)
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/Controllers/Index.php#L13
+
+
+
+2, 3.
+AdminDataTable
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/AdminDataTable.php
+
+Author::getFullName() - получаем массив функций, одна из них с замыканием
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/models/Author.php#L21
+
+В контролере Admin создаю объект AdminDataTable и вызываю метод render()
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/Controllers/Admin.php#L54-L55
+
+Тут view для AdminDataTable:
+    - в $this->fullName придёт функция с замыканием на firstname.
+    - далее вызываем и передаем lastname.
+https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/templates/view_fullName_author.php
