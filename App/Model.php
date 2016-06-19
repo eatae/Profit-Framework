@@ -14,13 +14,17 @@ abstract class Model
     public $id;
 
 
-    public static function findAll($limit = 5)
+    public static function findAll($gen = '', $limit = 5)
     {
         $sql = 'SELECT * FROM ' . static::$table .
                     ' ORDER BY id DESC LIMIT ' . $limit;
 
         $db = new Db();
-        $data = $db->query($sql, [], static::class);
+        if ($gen) {
+            $data = $db->queryEach($sql, [], static::class);
+        } else {
+            $data = $db->query($sql, [], static::class);
+        }
         if (!$data or empty($data)) {
             throw new NotFoundException('В данный момент товара нет findAll');
         } else {

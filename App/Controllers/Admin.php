@@ -7,9 +7,12 @@ use App;
 
 use App\models;
 
+use App\models\Author as Author;
+
 class Admin extends App\Controller
 {
     public $article;
+    public $authorName;
     protected $accessFlag;
     protected $access =
         [
@@ -48,6 +51,8 @@ class Admin extends App\Controller
             if ($_SERVER['REQUEST_METHOD'] == 'GET' and !$this->accessFlag) {
                 $this->view->display
                 (__DIR__ . '/../../templates/view_admin.php');
+                $this->authorName = new App\AdminDataTable(Author::findAll(), Author::getFullName());
+                $this->authorName->render();
             } else if ($_SERVER['REQUEST_METHOD'] == 'POST' and $this->access == $_POST) {
                 $_SESSION['admin'] = true;
                 $this->view->display

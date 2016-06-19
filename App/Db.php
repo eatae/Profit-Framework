@@ -29,9 +29,17 @@ class Db
     }
 
 
-    public function fill(array $data)
+    public function queryEach($sql, $params=[], $class='')
     {
-
+        $st_hdr = $this->db_hdr->prepare($sql);
+        //задаём объект для выборки
+        $st_hdr->setFetchMode(\PDO::FETCH_CLASS, $class);
+        if (!$st_hdr->execute($params)) {
+            throw new DbException('Ошибка запроса');
+        }
+        while ($data = $st_hdr->fetch()) {
+            yield $data;
+        }
     }
 
 
@@ -52,5 +60,12 @@ class Db
             throw new DbException('Ошибка запроса id');
         }
         return $id;
+    }
+
+
+
+    public function fill(array $data)
+    {
+
     }
 }

@@ -18,4 +18,18 @@ class Author extends App\Model
 
     protected static $table = 'authors';
 
+    public static function getFullName()
+    {
+        return [
+            'id' => function($id){
+                        return 'Id автора: ' . $id;
+                    },
+            'fullName' => function($firstname){
+                            return function ($lastname) use ($firstname){
+                                return 'ФИО: ' . $firstname . ' ' . $lastname;
+                            };
+                        }
+        ];
+    }
+
 }

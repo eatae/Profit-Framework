@@ -9,15 +9,3 @@ class NotFoundException extends AbstractLogException
 {
     protected static $levelLog = Log\LogLevel::CRITICAL;
 }
-
-
-
-/* TEST */
-/*
-try {
-    throw new NotFoundException('Тут сообщение...');
-
-} catch (NotFoundException $e) {
-    $e->setLog();
-}
-*/

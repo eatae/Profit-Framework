@@ -10,7 +10,7 @@ class Index extends App\Controller
     public function actionDefault()
     {
         try {
-            $articles = App\models\Article::findAll();
+            $articles = App\models\Article::findAll(true);
 
             //view инициализируем в Controller
             $this->view->news = $articles;

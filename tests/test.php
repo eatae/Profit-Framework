@@ -9,18 +9,19 @@ class User
 
     public function __construct()
     {
-        $this->test = function(){
-            return 3;
+        $this->test = function($x){
+            return 3 + $x;
         };
     }
 }
 
 $user = new User();
 // Call to undefined method User::test()
-echo $user->test();
+var_dump($user->test);
+echo call_user_func($user->test, 3);
 
 //Parse error: syntax error, unexpected '('
-echo ($user->test)();
+//echo ($user->test)();
 
 
 
