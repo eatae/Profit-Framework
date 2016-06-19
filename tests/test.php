@@ -3,11 +3,211 @@
 require __DIR__ .'/../autoload.php';
 
 
+class User
+{
+    public $test;
 
-$art = new \App\models\Article();
+    public function __construct()
+    {
+        $this->test = function(){
+            return 3;
+        };
+    }
+}
+
+$user = new User();
+// Call to undefined method User::test()
+echo $user->test();
+
+//Parse error: syntax error, unexpected '('
+echo ($user->test)();
 
 
-public function delete()
+
+
+
+
+
+
+
+/*GENERATOR*/
+//-----------
+// Возврат значений
+/*
+function one() {
+    echo 'start <br>';
+    for ($i = 1; $i <= 3; $i++) {
+        // more code
+        yield $i;
+        echo "Property yield in func one $i<br>";
+        yield $i;
+    }
+    echo 'stop';
+}
+
+$generator = one();
+
+foreach ($generator as $value) {
+    echo "$value <br>";
+}
+
+
+
+
+
+
+
+
+
+
+/*...*/
+//----
+/*
+function sum($one, ...$nums)
+{
+    var_dump($nums);
+    return array_sum($nums);
+}
+
+sum(1, 2, 3, 4, 5);
+
+
+
+
+
+
+
+
+
+/*GENERATOR*/
+//-----------
+// Возврат значений
+/*
+function one() {
+    for ($i = 1; $i <= 3; $i++) {
+        // more code
+        yield $i;
+        echo "Property yield in func one $i<br>";
+        yield $i;
+    }
+}
+
+$generator = one();
+
+foreach ($generator as $value) {
+    echo "$value <br>";
+}
+
+
+
+
+
+/*GENERATOR*/
+//-----------
+// Возврат значений
+/*
+function gen()
+{
+    yield 'a';
+    yield 'b';
+    yield 'name'=> 'John';
+    yield 'd';
+    yield 10=> 'e';
+    yield 'f';
+}
+foreach (gen() as $key => $value)
+    echo "$key: $value <br>";
+
+
+
+
+
+/*GENERATOR*/
+//-----------
+/*
+function numbers()
+{
+    echo"START<br>";
+    for ($i= 0; $i< 5; ++$i) {
+        yield $i;
+    }
+    echo "FINISH<br>";
+}
+
+foreach (numbers() as $value) {
+    echo "VALUE: $value <br>";
+}
+
+
+
+
+
+
+
+
+
+/*CLOSURE*//*
+------------
+
+class User
+{
+    private $_name;
+    function __construct($n){ $this->_name = $n; }
+
+    function sayHello($word)
+    {
+        return function() use($word)
+        {
+            echo "$word {$this->_name}!";
+        };
+     }
+}
+
+$user = new User('John');     //замкнули
+$user->sayHello('Привет');     //придет функция Привет John
+$a = $user->sayHello('Hello');
+$a();
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+$str = 'closure';
+
+$func = function($x) use ($str)
+        {
+            echo $x .' '. $str . '<br>';
+        };
+
+$func('Здесь x');
+
+
+$str = 'open';
+$func('Здесь y');
+
+
+
+
+
+
+
+
+
+
+/*
+$art = new App\models\Article();
+
+
+function delete()
 {
     if(empty($this->id))
         return false;
@@ -17,7 +217,7 @@ public function delete()
 
     $sql = 'DELETE FROM news WHERE id = :id';
     $db = new App\Db();
-    $db->execute($sql, [':id'=>$this->id])
+    $db->execute($sql, [':id'=>$this->id]);
         //throw new App\Exceptions\NotFoundException('Ошибка findById');
     var_dump($db);
     return true;
