@@ -1,3 +1,35 @@
+#### nginx
+#### php-fpm
+#### php-cli
+#### PostgreSQL
+#### MySQL
+#### RabbitMQ
+
+* При использовании ENTRYPOINT как из Dockerfile, так и из docker-compose останавливается контейнер. Поэтому выполняем:
+```
+docker exec -it prepare-cli composer require php-amqplib/php-amqplib
+```
+
+* В docker-compose.yml для сервиса rabbitmq указываем hostname чтобы сервис видел уже созданные очереди и сообщения после перезапуска контейнера.
+
+
+* Install PHPUnit or just install
+```
+docker exec -it prepare-php-cli composer require --dev phpunit/phpunit
+
+docker exec -it prepare-php-cli composer install
+```
+
+* Run Tests
+```
+docker exec -it prepare-php-cli vendor/bin/phpunit tests
+```
+
+
+
+
+
+
 1.
 generator
 https://github.com/eatae/profitPHP2.local/blob/4480efe15a3fe0a1bb6b7265a27569b20c00a2f4/App/Db.php#L41
