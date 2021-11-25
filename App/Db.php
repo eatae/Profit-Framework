@@ -2,14 +2,15 @@
 namespace App;
 
 use App\Exceptions\DbException;
+use PDO;
 
 class Db
 {
-    protected $db_hdr;
+    protected PDO $connection;
 
-    public function __construct()
+    public function __construct(PDO $connection)
     {
-        $this->db_hdr = new \PDO('mysql:host=127.0.0.1; dbname=profitphp2', 'root', '');
+        $this->connection = new PDO('mysql:host=127.0.0.1; dbname=profitphp2', 'root', '');
     }
 
     /**
@@ -17,7 +18,7 @@ class Db
      */
     public function query($sql, $params = [], $class='')
     {
-        $st_hdr = $this->db_hdr->prepare($sql);
+        $st_hdr = $this->connection->prepare($sql);
         if (!$st_hdr->execute($params)) {
             throw new DbException('Ошибка запроса');
         }
@@ -31,7 +32,7 @@ class Db
 
     public function queryEach($sql, $params=[], $class='')
     {
-        $st_hdr = $this->db_hdr->prepare($sql);
+        $st_hdr = $this->connection->prepare($sql);
         //задаём объект для выборки
         $st_hdr->setFetchMode(\PDO::FETCH_CLASS, $class);
         if (!$st_hdr->execute($params)) {
@@ -45,9 +46,10 @@ class Db
 
     public function execute($sql, $params=[])
     {
-        $st_hdr = $this->db_hdr->prepare($sql);
-        if(!$st_hdr->execute($params))
+        $st_hdr = $this->connection->prepare($sql);
+        if (!$st_hdr->execute($params)) {
             throw new DbException('Ошибка запроса');
+        }
     }
 
     /**
@@ -55,8 +57,8 @@ class Db
      */
     public function insertId()
     {
-        $id = $this->db_hdr->lastInsertId();
-        if(!$id) {
+        $id = $this->connection->lastInsertId();
+        if (!$id) {
             throw new DbException('Ошибка запроса id');
         }
         return $id;
