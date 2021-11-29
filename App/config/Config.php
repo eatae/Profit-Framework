@@ -1,6 +1,9 @@
 <?php
 namespace App\config;
 
+/**
+ * Simple example
+ */
 class Config
 {
     public $data;

@@ -1,5 +1,5 @@
 <?php
-namespace App\models;
+namespace App\Models;
 require __DIR__ . '/../../autoload.php';
 
 use App;
