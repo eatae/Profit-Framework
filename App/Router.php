@@ -22,8 +22,7 @@ class Router
         }
     }
 
-
-    public function checkDir($dir)
+    public function checkDir($dir): bool
     {
         $dir = trim($dir, '\\');
         $dir = str_replace('\\', '/', $dir);
