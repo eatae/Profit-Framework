@@ -1,7 +1,11 @@
-<?
+<?php
 header('Content-type: text/html; charset=utf-8');
-require __DIR__ . '/autoload.php';
 session_start();
+
+require __DIR__ . DIRECTORY_SEPARATOR .'..'. DIRECTORY_SEPARATOR .'functions.php';
+require __DIR__ . DIRECTORY_SEPARATOR .'..'. DIRECTORY_SEPARATOR .'/bootstrap.php';
+require __DIR__ . DIRECTORY_SEPARATOR .'..'. DIRECTORY_SEPARATOR .'/autoload.php';
+
 
 $rout = new App\Router($_SERVER['REQUEST_URI']);
 //$rout->ctrlClass - controller name
