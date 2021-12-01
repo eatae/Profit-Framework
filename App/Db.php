@@ -10,7 +10,7 @@ class Db
 
     public function __construct(PDO $connection)
     {
-        $this->connection = new PDO('mysql:host=127.0.0.1; dbname=profitphp2', 'root', '');
+        $this->connection = $connection;
     }
 
     /**

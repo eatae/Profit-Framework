@@ -4,3 +4,6 @@
 13 Jun 2016, 15:59:15 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
 13 Jun 2016, 15:59:51 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
 13 Jun 2016, 15:59:51 FILE:C:\OpenServer\domains\profitPHP2.local\App\Db.php LINE:22 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
+1 Dec 2021, 13:34:51 FILE:/var/www/profit/App/Db.php LINE:39 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
+1 Dec 2021, 13:34:51 FILE:/var/www/profit/App/Db.php LINE:39 CLASS:App\Exceptions\AbstractLogException Ошибка запроса ALERT
+1 Dec 2021, 15:25:20 FILE:/var/www/profit/App/Model.php LINE:40 CLASS:App\Exceptions\AbstractLogException Ошибка findById CRITICAL

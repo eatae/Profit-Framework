@@ -9,11 +9,11 @@ class Article extends App\Model
 {
     /* свойства одноимённые столбцам в db */
     public $id;
+    public $author_id;
     public $title;
     public $lead;
-    public $author_id;
 
-    protected static $table = 'news';
+    protected static $table = 'articles';
 
     private $author;
     private $authorName;

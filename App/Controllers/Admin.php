@@ -16,8 +16,8 @@ class Admin extends App\Controller
     protected $accessFlag;
     protected $access =
         [
-            'login' => 'root',
-            'pass' => '000'
+            'login' => 'user',
+            'pass' => '2222'
         ];
 
 

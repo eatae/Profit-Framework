@@ -1,14 +1,11 @@
 <?php
 namespace App;
 
-use App\traits;
-
-require __DIR__ . '/../autoload.php';
-
+use App\Traits;
 
 class View implements \Countable
 {
-    use traits\count_magic_trait;
+    use Traits\DataCountable;
 
     public function render($template)
     {

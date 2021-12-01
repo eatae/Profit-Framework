@@ -11,7 +11,7 @@ class Router
     {
         $parts = explode('/', $uri);
         //controller name
-        $ctrl = $parts[1] ?: 'Index';
+        $ctrl = $parts[1] ?: 'index';
         //action name
         $action = $parts[2] ?: 'action';
         $this->ctrlClass = 'App\Controllers\\' . ucfirst($ctrl);

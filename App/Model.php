@@ -2,8 +2,7 @@
 namespace App;
 
 use App\Exceptions\NotFoundException;
-
-require __DIR__ . '/../autoload.php';
+use DI\Container;
 
 
 abstract class Model
@@ -13,13 +12,12 @@ abstract class Model
 
     public $id;
 
-
-    public static function findAll($gen = '', $limit = 5)
+    public static function findAll($gen = '', $limit = 10)
     {
+        $db = self::getDb();
         $sql = 'SELECT * FROM ' . static::$table .
                     ' ORDER BY id DESC LIMIT ' . $limit;
 
-        $db = new Db();
         if ($gen) {
             $data = $db->queryEach($sql, [], static::class);
         } else {
@@ -35,7 +33,7 @@ abstract class Model
 
     public static function findById($id)
     {
-        $db = new Db();
+        $db = self::getDb();
         $data = $db->query('SELECT * FROM ' . static::$table .
                                 ' WHERE id = :id', [':id' => $id], static::class);
         if (!$data or empty($data)) {
@@ -49,10 +47,9 @@ abstract class Model
     /* проверяем id (true / false)*/
     public function checkId($id)
     {
-        $db = new Db();
         $sql = 'SELECT id FROM '. static::$table .' WHERE id = :id';
         //db->query return - array | bool
-        return (bool)$db->query($sql, [':id'=>$id]);
+        return (bool)$this->db->query($sql, [':id'=>$id]);
     }
 
 
@@ -63,12 +60,11 @@ abstract class Model
     public function delete()
     {
         $sql = 'DELETE FROM '. static::$table . ' WHERE id = :id';
-        $db = new Db();
-        //проверяем Id
+        // проверяем Id
         if (!$this->checkId($this->id))
             throw new NotFoundException('Такого ID нет');
 
-        $db->query($sql, [':id'=>$this->id]);
+        $this->db->query($sql, [':id'=>$this->id]);
     }
 
 
@@ -91,11 +87,9 @@ abstract class Model
                  '('. implode(', ', $props) .')
                   VALUES ('. implode(', ', $binds) .')';
 
-        $db = new Db();
-
         //проверили в class Db
-        $db->execute($sql, $params);
-        $this->id = $db->insertId();
+        $this->db->execute($sql, $params);
+        $this->id = $this->db->insertId();
     }
 
 
@@ -117,8 +111,7 @@ abstract class Model
                     ' SET ' . implode(', ', $set) .
                     ' WHERE id = '. $this->id;
 
-        $db = new Db();
-        $db->execute($sql, $params);
+        $this->db->execute($sql, $params);
     }
 
 
@@ -130,6 +123,12 @@ abstract class Model
         } else {
             $this->update();
         }
+    }
+
+
+    public static function getDb(): Db
+    {
+        return (App::getContainer())->get('db');
     }
 
 }

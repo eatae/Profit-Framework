@@ -69,6 +69,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     container_name: ${COMPOSE_PROJECT_NAME}-mysql
     restart: unless-stopped
     ports:

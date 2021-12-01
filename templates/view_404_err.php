@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Index</title>
-    <style type="text/css">
+    <style>
     p
     {
         border: 2px dotted darkseagreen;
@@ -23,7 +23,7 @@
         Ошибка 404: не найдено.
     </p>
 
-    <a href="/Index">Главная</a>
+    <a href="/index">Главная</a>
 </table>
 </body>
 </html>

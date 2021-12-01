@@ -17,7 +17,7 @@ class Index extends App\Controller
             $this->view->display(__DIR__ . '/../../templates/view_index.php');
 
         } catch (\PDOException $e) {
-            $this->view->exception = "PDOException";
+            $this->view->exception = $e->getMessage();
             $this->view->display(__DIR__ . '/../../templates/view_db_err.php');
         } catch (App\Exceptions\DbException $e) {
                 $e->setLog();

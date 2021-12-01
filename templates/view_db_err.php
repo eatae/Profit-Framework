@@ -18,13 +18,13 @@
 <body>
     <h1>Предупреждение</h1>
     <p>
-        <? echo ($this->exception); ?>
+        <?php echo ($this->exception); ?>
         <br>
         <br>
         В настоящий момент данные не доступны,
         попробуйте обратиться некоторое время спустя.
     </p>
-    <a href="/Index">Главная</a>
+    <a href="/index">Главная</a>
 </table>
 </body>
 </html>

@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <a href="/Admin">админка</a>
+    <a href="/admin">админка</a>
     <table>
         <th>Ссылка на новость</th>
         <th>Название</th>
