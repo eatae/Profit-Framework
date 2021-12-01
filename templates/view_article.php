@@ -10,7 +10,7 @@
 <?php
     if(!is_object($this->article)) {
         echo 'Такой записи не существует';
-        echo "<a href='index'>На главную</a>";
+        echo "<a href='/index'>На главную</a>";
         exit;
     }
 
