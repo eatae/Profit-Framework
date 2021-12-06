@@ -1,6 +1,7 @@
 <?php
 use Dotenv\Dotenv;
 use DI\ContainerBuilder;
+use \DI\Container;
 use App\App;
 
 /**
@@ -25,4 +26,4 @@ $builder->addDefinitions(
 
 $container = $builder->build();
 
-App::setContainer($container);
+(new App($container));

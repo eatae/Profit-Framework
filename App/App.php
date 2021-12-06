@@ -6,15 +6,24 @@ use DI\Container;
 
 class App
 {
-    protected static Container $container;
+    private Container $container;
+    private static self $_instance;
 
-    public static function setContainer(Container $container)
+
+    public function __construct(Container $container)
     {
-        self::$container = $container;
+        $this->container = $container;
+        self::$_instance = $this;
     }
 
-    public static function getContainer(): ?Container
+
+    public function getContainer(): Container
     {
-        return self::$container;
+        return $this->container;
+    }
+
+    public static function container(): Container
+    {
+        return self::$_instance->getContainer();
     }
 }

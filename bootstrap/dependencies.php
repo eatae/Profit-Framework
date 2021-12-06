@@ -14,9 +14,7 @@ return [
             $_ENV['MYSQL_PASSWORD']
         );
     },
-    /**
-     * @var 'db'
-     */
+
     Db::class => function (ContainerInterface $c) {
         return new Db($c->get('PDO.mysql'));
     }

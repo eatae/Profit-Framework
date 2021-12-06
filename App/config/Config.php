@@ -16,7 +16,7 @@ class Config
             $this->data = include $filePath;
     }
 
-    public static function getInstance(){
+    public static function getInstance() {
         if (self::$_instance === null){
             self::$_instance = new self;
         }
