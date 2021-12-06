@@ -3,6 +3,9 @@ use App\Db;
 use Psr\Container\ContainerInterface;
 use function DI\factory;
 
+/**
+ *
+ */
 return [
     'PDO.mysql' => function (ContainerInterface $c) {
         return new PDO(
@@ -11,6 +14,9 @@ return [
             $_ENV['MYSQL_PASSWORD']
         );
     },
+    /**
+     * @var 'db'
+     */
     'db' => function (ContainerInterface $c) {
         return new Db($c->get('PDO.mysql'));
     }

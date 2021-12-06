@@ -25,8 +25,8 @@ class Db
         if (empty($class)) {
             return $st_hdr->fetchAll();
         }
-        return $st_hdr->fetchAll(\PDO::FETCH_CLASS, $class);
 
+        return $st_hdr->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
 
@@ -54,6 +54,7 @@ class Db
 
     /**
      * @return string
+     * @throws DbException
      */
     public function insertId()
     {
@@ -63,7 +64,6 @@ class Db
         }
         return $id;
     }
-
 
 
     public function fill(array $data)

@@ -2,8 +2,10 @@
 header('Content-type: text/html; charset=utf-8');
 session_start();
 
-require __DIR__ . DIRECTORY_SEPARATOR .'..'. DIRECTORY_SEPARATOR .'/autoload.php';
-require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'bootstrap' . DIRECTORY_SEPARATOR . 'bootstrap.php';
+require_once realpath(__DIR__ .'/../autoload.php');
+require_once realpath(__DIR__ .'/../bootstrap/paths.php');
+require_once realpath(__DIR__ .'/../bootstrap/functions.php');
+require_once realpath(__DIR__ . '/../bootstrap/bootstrap.php');
 
 /**** DEBUG ****/
 //sd( realpath(bootstrapDir()) );

@@ -3,9 +3,6 @@ use Dotenv\Dotenv;
 use DI\ContainerBuilder;
 use App\App;
 
-require_once realpath(__DIR__ . DIRECTORY_SEPARATOR . 'paths.php');
-require_once realpath(__DIR__ . DIRECTORY_SEPARATOR . 'functions.php');
-
 /**
  * Set $_ENV
  */
@@ -23,7 +20,7 @@ $builder->useAnnotations(false);
 
 // add definitions
 $builder->addDefinitions(
-    require realpath(__DIR__ . DIRECTORY_SEPARATOR . 'dependencies.php')
+    require realpath(__DIR__ .'/dependencies.php')
 );
 
 $container = $builder->build();

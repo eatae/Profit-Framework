@@ -5,7 +5,7 @@ use App\Exceptions\NotFoundException;
 use DI\Container;
 
 
-abstract class Model
+class Model
 {
 
     protected static $table;
