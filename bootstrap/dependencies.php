@@ -17,7 +17,7 @@ return [
     /**
      * @var 'db'
      */
-    'db' => function (ContainerInterface $c) {
+    Db::class => function (ContainerInterface $c) {
         return new Db($c->get('PDO.mysql'));
     }
 ];
