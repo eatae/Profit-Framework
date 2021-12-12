@@ -33,7 +33,7 @@ class Db
     public function queryEach($sql, $params=[], $class='')
     {
         $st_hdr = $this->connection->prepare($sql);
-        //задаём объект для выборки
+        // задаём объект для выборки
         $st_hdr->setFetchMode(\PDO::FETCH_CLASS, $class);
         if (!$st_hdr->execute($params)) {
             throw new DbException('Ошибка запроса');

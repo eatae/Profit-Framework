@@ -2,8 +2,6 @@
 
 namespace tests;
 
-
-
 use App\Controllers\Index;
 use App\Router;
 use PHPUnit\Framework\TestCase;

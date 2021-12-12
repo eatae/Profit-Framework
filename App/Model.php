@@ -128,7 +128,7 @@ class Model
 
     public static function getDb(): Db
     {
-        return (App::getContainer())->get('db');
+        return (App::container())->get('db');
     }
 
 }
