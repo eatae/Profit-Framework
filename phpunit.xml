@@ -1,5 +1,5 @@
 <?xml  version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="autoload.php">
+<phpunit bootstrap="tests/bootstrap.php">
     <!-- test Group name - user_store -->
     <testsuite name="base_tests">
         <!-- suffix and directory group -->

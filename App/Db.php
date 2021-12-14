@@ -8,13 +8,20 @@ class Db
 {
     protected PDO $connection;
 
+    /**
+     * @param PDO $connection
+     */
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
     }
 
     /**
-     * @return array
+     * @param $sql
+     * @param array $params
+     * @param string $class
+     * @return array|false
+     * @throws DbException
      */
     public function query($sql, $params = [], $class='')
     {
@@ -29,11 +36,17 @@ class Db
         return $st_hdr->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
-
-    public function queryEach($sql, $params=[], $class='')
+    /**
+     * @param $sql
+     * @param array $params
+     * @param string $class
+     * @return \Generator
+     * @throws DbException
+     */
+    public function queryEach($sql, $params=[], $class=''): \Generator
     {
         $st_hdr = $this->connection->prepare($sql);
-        //задаём объект для выборки
+        // задаём объект для выборки
         $st_hdr->setFetchMode(\PDO::FETCH_CLASS, $class);
         if (!$st_hdr->execute($params)) {
             throw new DbException('Ошибка запроса');
@@ -43,7 +56,11 @@ class Db
         }
     }
 
-
+    /**
+     * @param $sql
+     * @param array $params
+     * @throws DbException
+     */
     public function execute($sql, $params=[])
     {
         $st_hdr = $this->connection->prepare($sql);
@@ -56,7 +73,7 @@ class Db
      * @return string
      * @throws DbException
      */
-    public function insertId()
+    public function lastInsertId(): string
     {
         $id = $this->connection->lastInsertId();
         if (!$id) {
@@ -65,9 +82,4 @@ class Db
         return $id;
     }
 
-
-    public function fill(array $data)
-    {
-
-    }
 }

@@ -12,6 +12,8 @@ class App
 
     public function __construct(Container $container)
     {
+        if (isset(self::$_instance)) return;
+
         $this->container = $container;
         self::$_instance = $this;
     }
