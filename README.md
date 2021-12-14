@@ -13,15 +13,21 @@ docker exec -it profit-php-cli composer require --dev phpunit/phpunit
 docker exec -it profit-php-cli composer install
 ```
 
-* Run Tests
+* debug
 ```
-docker exec -it profit-php-cli vendor/bin/phpunit tests
+docker exec -it profit-php-cli php debug/debug.php
 ```
-
 
 * php-amqplib
 ```
 docker exec -it profit-php-cli composer require php-amqplib/php-amqplib
+```
+
+* Tests
+```
+docker exec -it profit-php-cli vendor/bin/phpunit tests
+
+docker exec -it profit-php-cli vendor/bin/phpunit --filter methodName path/to/file.php 
 ```
 
 

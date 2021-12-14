@@ -78,7 +78,7 @@ class Model
         foreach ($this as $key => $val) {
             if ($key === 'id') continue;
 
-            $props[] = $key;    //имена свойст / столбцов
+            $props[] = $key;    //имена свойств / столбцов
             $binds[] = ':' . $key;  //для подстановки (:lead,..)
             $params[':' .$key] = $val;  //значения
         }
